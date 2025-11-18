@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "283099094740",
+    "project_id": "wazine-app",
+    "storage_bucket": "wazine-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283099094740:android:7d3df5f4ead1471040a541",
+        "android_client_info": {
+          "package_name": "apptest.wazin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj9SfBtVguF7KAEDkaDBmZcIIKudPcFmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
