@@ -57,7 +57,6 @@ class _SplashScreenState extends State<SplashScreen>
       end: 1.0,
     ).animate(CurvedAnimation(parent: _logoController, curve: Curves.easeIn));
 
-    // ⭐ ANIMATED BACKGROUND GRADIENT
     _bgController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
@@ -68,10 +67,8 @@ class _SplashScreenState extends State<SplashScreen>
       end: CustomColors.green,
     ).animate(CurvedAnimation(parent: _bgController, curve: Curves.easeInOut));
 
-    // START
     _logoController.forward();
 
-    // CHECK LOGIN
     checkLoginStatus();
   }
 

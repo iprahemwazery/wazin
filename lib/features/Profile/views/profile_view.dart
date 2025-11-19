@@ -26,7 +26,6 @@ class ProfileView extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: [
-                  // الجزء الأبيض
                   Positioned.fill(
                     top: 70,
                     child: Container(
@@ -116,7 +115,7 @@ class ProfileView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // الصورة الدائرية
+
                   const Positioned(
                     top: 0,
                     child: ProfileAvatar(

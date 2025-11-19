@@ -9,7 +9,6 @@ class BalanceCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // النصوص على الشمال
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [

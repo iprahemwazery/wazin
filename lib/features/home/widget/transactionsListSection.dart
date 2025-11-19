@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:wazin/features/home/widget/custom_salary.dart';
-import 'package:wazin/features/home/widget/card_money_container.dart';
+import 'package:wazin/features/auth/card_miney/view/card_money_container.dart';
 
 class TransactionsListSection extends StatelessWidget {
   final List<Map<String, dynamic>> transactions;

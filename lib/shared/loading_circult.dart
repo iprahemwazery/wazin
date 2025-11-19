@@ -7,7 +7,7 @@ class LoadingCircult extends StatelessWidget {
     required this.progress,
     required this.label,
   });
-  final double progress; // نسبة التحميل (50%)
+  final double progress;
   final String label;
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,8 @@ class LoadingCircult extends StatelessWidget {
                 child: CircularProgressIndicator(
                   value: progress,
                   strokeWidth: 5,
-                  backgroundColor: Colors.grey.shade300, // اللون الغامق
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Colors.blue,
-                  ), // النص الأزرق
+                  backgroundColor: Colors.grey.shade300,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
                 ),
               ),
               Text(

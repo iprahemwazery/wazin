@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wazin/features/splashScreen/view/splash_screen_view.dart';
-import 'transaction_provider.dart'; // استدعي الملف الجديد
+import 'transaction_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

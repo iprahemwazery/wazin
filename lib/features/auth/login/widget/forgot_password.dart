@@ -7,9 +7,7 @@ class ForgotPasswordText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: GestureDetector(
-        onTap: () {
-          // هنا ممكن تضيف نافذة إعادة تعيين الباسورد
-        },
+        onTap: () {},
         child: Text(
           'Forgot Password?',
           style: TextStyle(

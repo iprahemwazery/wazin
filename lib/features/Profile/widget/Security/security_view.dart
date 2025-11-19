@@ -44,30 +44,18 @@ class SecurityView extends StatelessWidget {
                     ),
                     const Gap(20),
 
-                    // خيار تغيير الـ PIN
-                    _buildSecurityOption(
-                      title: 'Change PIN',
-                      onTap: () {
-                        // TODO: انت هنا ضيف التوجيه لصفحة تغيير الـ PIN
-                      },
-                    ),
+                    _buildSecurityOption(title: 'Change PIN', onTap: () {}),
                     const Divider(),
 
-                    // خيار تغيير الباسورد
                     _buildSecurityOption(
                       title: 'Change Password',
-                      onTap: () {
-                        // TODO: صفحة تغيير الباسورد
-                      },
+                      onTap: () {},
                     ),
                     const Divider(),
 
-                    // خيار تفعيل التحقق الثنائي
                     _buildSecurityOption(
                       title: 'Two-Factor Authentication',
-                      onTap: () {
-                        // TODO: تفعيل التحقق الثنائي
-                      },
+                      onTap: () {},
                     ),
                     const Divider(),
                   ],

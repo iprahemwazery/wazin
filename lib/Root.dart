@@ -35,11 +35,11 @@ class _RootState extends State<Root> {
     ];
 
     final List<String> labels = [
-      'الرئيسية',
+      'Home',
       'Analysis',
-      'المعاملات',
-      'التصنيفات',
-      'الملف الشخصي',
+      'Transaction',
+      'Categories',
+      'Profile',
     ];
 
     return Scaffold(

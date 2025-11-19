@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:wazin/core/custom_colors.dart';
 import 'package:wazin/features/dataCardHome/widget/week_crach.dart';
 import 'package:wazin/features/home/widget/app_bare_notification.dart';
-import 'package:wazin/features/home/widget/card_money_container.dart';
+import 'package:wazin/features/auth/card_miney/view/card_money_container.dart';
 import 'package:wazin/features/home/widget/custom_salary.dart';
 import 'package:wazin/transaction_provider.dart';
 
@@ -63,7 +63,6 @@ class DataCartView extends StatelessWidget {
                           const SizedBox(height: 250, child: WeeklyBarChart()),
                           const Gap(20),
 
-                          // عرض العمليات من الداتا
                           ...transactions.map((tx) {
                             final date =
                                 tx['date'] is Timestamp
