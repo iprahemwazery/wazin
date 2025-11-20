@@ -1,16 +1,54 @@
-# wazin
+## 👤 About the Author
 
-A new Flutter project.
+**Ibrahim Wazery**  
+Founder of [wazery.net](https://wazery.net), a platform for all things related to perfumes and e-commerce solutions.
 
-## Getting Started
+## 📱 App Screenshots
 
-This project is a starting point for a Flutter application.
+### Home Page
 
-A few resources to get you started if this is your first Flutter project:
+![Home Page](images/home.jpg)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Login Page
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Login Page](images/login.jpeg)
+
+### Singup Page
+
+![Singup Page](images/singup.jpeg)
+
+### Transaction page
+
+![tTransaction page](images/transaction.jpg)
+
+### Scurity Page
+
+![Scurity Page](images/scurity.jpg)
+
+### Notification Page
+
+![Notification Page](images/notification.jpg)
+
+### quickly_analysis Page
+
+![quickly_analysis Page](images/quickly_analysis.jpg)
+
+### Analysis Page
+
+![Analysis Page](images/analysis.jpg)
+
+### Profile Page
+
+![Profile Page](images/profile.jpg)
+
+### Edit_my_profilre Page
+
+![Edit_my_profilre Page](images/edit_my_profilre.jpg)
+
+### Categories Page
+
+![Categories Page](images/categories.jpg)
+
+### Splash_screen Page
+
+![Splash_screen Page](images/splash_screen.jpg)
