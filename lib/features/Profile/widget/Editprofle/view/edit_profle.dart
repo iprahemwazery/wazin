@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import 'package:wazin/core/custom_colors.dart';
 import 'package:wazin/features/Profile/widget/Editprofle/widget/profile_image_picker.dart';
@@ -24,9 +25,11 @@ class _EditProfileViewState extends State<EditProfileView> {
   File? _selectedImageFile;
   String? _profileImageUrl;
   bool _isLoading = true;
+  bool _updateLoading = false;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
 
   @override
   void initState() {
@@ -51,15 +54,40 @@ class _EditProfileViewState extends State<EditProfileView> {
     }
   }
 
+  Future<String?> _uploadImage(File file) async {
+    try {
+      final uid = _auth.currentUser!.uid;
+
+      final ref = _storage.ref().child("profile_images/$uid.jpg");
+      await ref.putFile(file);
+
+      return await ref.getDownloadURL();
+    } catch (e) {
+      debugPrint("Image upload error: $e");
+      return null;
+    }
+  }
+
   Future<void> _updateProfile() async {
+    setState(() => _updateLoading = true);
+
     final uid = _auth.currentUser?.uid;
     if (uid == null) return;
+
+    String? imageUrl = _profileImageUrl;
+
+    if (_selectedImageFile != null) {
+      imageUrl = await _uploadImage(_selectedImageFile!);
+    }
 
     await _firestore.collection('users').doc(uid).update({
       'name': _usernameController.text,
       'email': _emailController.text,
       'phone': _phoneController.text,
+      'imageUrl': imageUrl,
     });
+
+    setState(() => _updateLoading = false);
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Profile updated successfully')),
@@ -93,7 +121,6 @@ class _EditProfileViewState extends State<EditProfileView> {
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: [
-                  // الجزء الأبيض مع Scrollable محتوى
                   Positioned.fill(
                     top: 100,
                     child: Container(
@@ -110,7 +137,8 @@ class _EditProfileViewState extends State<EditProfileView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const SizedBox(height: 60), // مساحة للصورة
+                              const SizedBox(height: 60),
+
                               Center(
                                 child: Text(
                                   _usernameController.text,
@@ -130,6 +158,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                   ),
                                 ),
                               ),
+
                               const Gap(38),
                               const Text(
                                 'Account settings',
@@ -138,26 +167,34 @@ class _EditProfileViewState extends State<EditProfileView> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+
                               const Gap(14),
                               ProfileTextField(
                                 title: 'Username',
                                 controller: _usernameController,
                               ),
+
                               const Gap(14),
                               ProfileTextField(
                                 title: 'Phone',
                                 controller: _phoneController,
                               ),
+
                               const Gap(14),
                               ProfileTextField(
                                 title: 'Email Address',
                                 controller: _emailController,
                               ),
+
                               const Gap(40),
                               Center(
                                 child: UpdateButton(
-                                  text: 'Update Profile',
-                                  onPressed: _updateProfile,
+                                  text:
+                                      _updateLoading
+                                          ? "Updating..."
+                                          : 'Update Profile',
+                                  onPressed:
+                                      _updateLoading ? () {} : _updateProfile,
                                 ),
                               ),
                             ],

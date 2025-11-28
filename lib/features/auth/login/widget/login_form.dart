@@ -48,7 +48,7 @@ class _LoginFormSectionState extends State<LoginFormSection> {
               isPassword: false,
               hintText: 'Enter your username or email',
             ),
-            const Gap(25),
+            const Gap(18),
             const Text(
               '  Password',
               style: TextStyle(fontSize: 18, color: Colors.black),
@@ -58,9 +58,9 @@ class _LoginFormSectionState extends State<LoginFormSection> {
               isPassword: true,
               hintText: 'Password',
             ),
-            const Gap(35),
-            ForgotPasswordText(),
             const Gap(8),
+            ForgotPasswordText(),
+            const Gap(35),
             LoginButtons(
               emailController: _emailController,
               passwordController: _passwordController,

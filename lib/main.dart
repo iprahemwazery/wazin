@@ -1,17 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:wazin/features/splashScreen/view/splash_screen_view.dart';
 import 'transaction_provider.dart';
+import 'features/auth/login/cubit/login_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => TransactionProvider(),
-      child: const MyApp(),
+    MultiBlocProvider(
+      providers: [BlocProvider(create: (_) => LoginCubit())],
+      child: ChangeNotifierProvider(
+        create: (_) => TransactionProvider(),
+        child: const MyApp(),
+      ),
     ),
   );
 }

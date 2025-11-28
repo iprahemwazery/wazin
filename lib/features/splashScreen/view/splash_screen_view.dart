@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wazin/Root.dart';
 import 'package:wazin/core/custom_colors.dart';
 import 'package:wazin/features/auth/login/view/log_in_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -23,32 +23,20 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _bgController;
   late Animation<Color?> _bgAnimation;
 
-  bool? isLoggedIn;
-
   @override
   void initState() {
     super.initState();
 
-    // ⭐ LOGO ANIMATION (Scale + Rotate + Fade)
     _logoController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2300), // مدة أطول وأجمل
+      duration: const Duration(milliseconds: 2300),
     );
 
-    _logoScaleAnimation = Tween<double>(
-      begin: 0.2,
-      end: 1.3, // تكبير الصورة بشكل جذاب
-    ).animate(
-      CurvedAnimation(
-        parent: _logoController,
-        curve: Curves.elasticOut, // البوم
-      ),
+    _logoScaleAnimation = Tween<double>(begin: 0.2, end: 1.3).animate(
+      CurvedAnimation(parent: _logoController, curve: Curves.elasticOut),
     );
 
-    _logoRotateAnimation = Tween<double>(
-      begin: -0.6, // دوران أكبر
-      end: 0.0,
-    ).animate(
+    _logoRotateAnimation = Tween<double>(begin: -0.6, end: 0.0).animate(
       CurvedAnimation(parent: _logoController, curve: Curves.easeOutBack),
     );
 
@@ -69,22 +57,20 @@ class _SplashScreenState extends State<SplashScreen>
 
     _logoController.forward();
 
-    checkLoginStatus();
+    _goNextAfterDelay();
   }
 
-  Future<void> checkLoginStatus() async {
-    final prefs = await SharedPreferences.getInstance();
-    final status = prefs.getBool('isLoggedIn') ?? false;
-    isLoggedIn = status;
-
+  Future<void> _goNextAfterDelay() async {
     await Future.delayed(const Duration(seconds: 3));
 
     if (!mounted) return;
 
+    final user = FirebaseAuth.instance.currentUser;
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (_) => isLoggedIn! ? const Root() : const LogInView(),
+        builder: (_) => user != null ? const Root() : const LogInView(),
       ),
     );
   }
