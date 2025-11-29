@@ -30,7 +30,7 @@ class CustomSalary extends StatelessWidget {
           // الأيقونة
           Image.asset(
             salaryIconPath,
-            width: screenWidth * 0.12, // 12% من عرض الشاشة
+            width: screenWidth * 0.12,
             height: screenWidth * 0.12,
             fit: BoxFit.fill,
           ),

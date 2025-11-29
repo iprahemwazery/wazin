@@ -12,10 +12,14 @@ import 'package:wazin/features/home/widget/simple_check_box.dart';
 import 'package:wazin/transaction_provider.dart';
 
 class TransactionView extends StatelessWidget {
-  const TransactionView({super.key});
+  final String category;
+  const TransactionView({super.key, required this.category});
 
   void _showAddTransactionDialog(BuildContext context) {
-    showDialog(context: context, builder: (ctx) => AddTransactionDialog());
+    showDialog(
+      context: context,
+      builder: (ctx) => AddTransactionDialog(category: category),
+    );
   }
 
   @override
@@ -50,7 +54,8 @@ class TransactionView extends StatelessWidget {
           body: Column(
             children: [
               const Gap(60),
-              const AppBareNotification(title: 'Transactions', showBack: true),
+              // هنا بدل 'Transactions' خليها اسم الكاتيجوري
+              AppBareNotification(title: category, showBack: true),
               const Gap(20),
               TotalBalanceCard(totalBalance: totalBalance),
               const Gap(20),

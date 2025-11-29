@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wazin/features/Categories/widget/categorires_list.dart';
+import 'package:wazin/features/Transactions/view/transaction_view.dart';
 
 class CategoryItem extends StatelessWidget {
   final String title;
@@ -9,6 +9,22 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CategoriresList(title: title, imagePath: imagePath);
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TransactionView(category: title),
+          ),
+        );
+      },
+      child: Column(
+        children: [
+          Image.asset(imagePath, height: 80, width: 80, fit: BoxFit.fill),
+          const SizedBox(height: 10),
+          Text(title, style: const TextStyle(fontSize: 20)),
+        ],
+      ),
+    );
   }
 }

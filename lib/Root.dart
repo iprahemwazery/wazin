@@ -45,7 +45,7 @@ class Root extends StatelessWidget {
               children: const [
                 HomeView(),
                 AnalysisView(),
-                TransactionView(),
+                TransactionView(category: ''),
                 CategoriesView(),
                 ProfileView(),
               ],

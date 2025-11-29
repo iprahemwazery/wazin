@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:wazin/transaction_provider.dart';
 
 class AddTransactionDialog extends StatefulWidget {
-  const AddTransactionDialog({super.key});
+  final String category; // الكاتيجوري اللي جاي من TransactionView
+  const AddTransactionDialog({super.key, required this.category});
 
   @override
   State<AddTransactionDialog> createState() => _AddTransactionDialogState();
@@ -14,6 +15,13 @@ class _AddTransactionDialogState extends State<AddTransactionDialog> {
   final TextEditingController labelController = TextEditingController();
   DateTime selectedDate = DateTime.now();
   String type = 'Income';
+
+  @override
+  void initState() {
+    super.initState();
+    // خلي Label جاهز باسم الكاتيجوري
+    labelController.text = widget.category;
+  }
 
   @override
   Widget build(BuildContext context) {
